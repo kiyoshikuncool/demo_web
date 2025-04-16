@@ -66,6 +66,7 @@ Cấu hình hiện tại của project nằm ở file `config.py`:
 
 
 # API Reference
+Xem thêm tại [POSTMAN](https://www.postman.com/chriswalkerkun/workspace/chriswalkerkun/collection/42576408-b7960f71-3b59-4b77-9d95-531aacdacd16?action=share&creator=42576408)
 
 ### Register / Đăng ký
 
