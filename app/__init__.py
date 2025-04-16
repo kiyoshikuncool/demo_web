@@ -11,6 +11,12 @@ db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
 jwt = JWTManager(app)
 
+# Initialize the database with the app context
+db.init_app(app) 
+with app.app_context():
+    from app.models import user
+    db.create_all()  # Create tables if they don't exist
+
 # Route của FE
 @app.get('/')
 @app.get('/index')
