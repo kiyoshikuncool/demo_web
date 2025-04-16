@@ -1,2 +1,2 @@
 [start]
-cmd = "gunicorn app.__init__:app"
+cmd = "gunicorn app:app"
