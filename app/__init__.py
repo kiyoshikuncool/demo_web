@@ -28,3 +28,6 @@ def dashboard():
 # Import and register routes (API)
 from app.controllers.user import user_bp
 app.register_blueprint(user_bp)
+
+# Import models
+from app.models.user import User
