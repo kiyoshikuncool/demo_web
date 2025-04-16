@@ -4,33 +4,35 @@ from flask_bcrypt import Bcrypt
 from flask_jwt_extended import JWTManager
 from app.config import Config
 
-app = Flask(__name__, template_folder='../templates', static_folder="../static") # Cấu hình cho FE
-app.config.from_object(Config)
-
 db = SQLAlchemy()
-bcrypt = Bcrypt(app)
-jwt = JWTManager(app)
+bcrypt = Bcrypt()
+jwt = JWTManager()
 
-# Initialize the database with the app context
-db.init_app(app) 
-with app.app_context():
-    from app.models import user
-    db.create_all()  # Create tables if they don't exist
+def create_app():
+    app = Flask(__name__, template_folder='../templates', static_folder="../static") # Cấu hình cho FE
+    app.config.from_object(Config)
 
-# Route của FE
-@app.get('/')
-@app.get('/index')
-def index():
-    return render_template('index.html')
+    # Initialize the extensions with the app
+    db.init_app(app)
+    bcrypt.init_app(app)
+    jwt.init_app(app)
 
-@app.get('/signup')
-def signup():
-    return render_template('register.html')
+    # Route của FE
+    @app.get('/')
+    @app.get('/index')
+    def index():
+        return render_template('index.html')
 
-@app.get('/dashboard')
-def dashboard():
-    return render_template('dashboard.html')
+    @app.get('/signup')
+    def signup():
+        return render_template('register.html')
 
-# Import and register routes (API)
-from app.controllers.user import user_bp
-app.register_blueprint(user_bp)
+    @app.get('/dashboard')
+    def dashboard():
+        return render_template('dashboard.html')
+
+    # Import and register routes (API)
+    from app.controllers.user import user_bp
+    app.register_blueprint(user_bp)
+    
+    return app
