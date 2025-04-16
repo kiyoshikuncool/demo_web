@@ -100,7 +100,7 @@ RETURN/Trả về:
 ### Profile / Thông tin người dùng
 
 ```http
-  POST /profile
+  GET /profile
 ```
 
 HEADER:
