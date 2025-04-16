@@ -12,6 +12,7 @@ bcrypt = Bcrypt(app)
 jwt = JWTManager(app)
 
 # Route của FE
+@app.get('/')
 @app.get('/index')
 def index():
     return render_template('index.html')
