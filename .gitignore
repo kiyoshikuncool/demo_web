@@ -1,0 +1,4 @@
+.qodo
+.vscode
+*.db
+__pycache__
