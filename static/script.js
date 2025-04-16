@@ -43,7 +43,6 @@ document.addEventListener("DOMContentLoaded", function () {
       const email = registerForm.email.value;
       const password = registerForm.password.value;
       const role = registerForm.role.value;
-      console.log(role)
 
       try {
         const response = await fetch("/register", {
