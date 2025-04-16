@@ -31,7 +31,7 @@ def login():
     user = User.query.filter_by(email=data['email']).first()
     
     if user and User.verify_password(user.password, data['password']):
-        access_token = create_access_token(identity=user.id)
+        access_token = create_access_token(identity=str(user.id)) # Vì id đang là số, đầu vô token là string (chuỗi)
         return jsonify(access_token=access_token, email=user.email, name=user.name), 200
 
     return jsonify(message="Invalid credentials"), 401

@@ -4,7 +4,7 @@ from flask_bcrypt import Bcrypt
 from flask_jwt_extended import JWTManager
 from app.config import Config
 
-app = Flask(__name__, template_folder='../templates', static_folder="../static") # Cấu hình cho FEFE
+app = Flask(__name__, template_folder='../templates', static_folder="../static") # Cấu hình cho FE
 app.config.from_object(Config)
 
 db = SQLAlchemy(app)
