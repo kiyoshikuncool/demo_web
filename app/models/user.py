@@ -6,7 +6,7 @@ class User(db.Model):
     username = db.Column(db.String(50), unique=True, index=True, nullable=True)
     name = db.Column(db.String(100), nullable=False)
     password = db.Column(db.String(100), nullable=False)
-    role = db.Column(db.String(20), nullable=False)  # Admin, Volunteer, Beneficiary
+    role = db.Column(db.String(20), nullable=False)  # Admin, Donor, Recipient
 
     @staticmethod
     def hash_password(password):

@@ -1,9 +1,9 @@
 from flask import Blueprint, request, jsonify
-from app import app, db
+from app import db
 from app.models.user import User
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
 
-user_bp = Blueprint('user', __name__)  # Blueprint for modularity
+user_bp = Blueprint('user', __name__, url_prefix='/api/auth')  # Blueprint for modularity
 
 # @user_bp.route('/register', methods=['POST']) # Cơ bản
 @user_bp.post('/register') # Đã quen
