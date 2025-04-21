@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const password = loginForm.password.value;
 
       try {
-        const response = await fetch("/login", {
+        const response = await fetch("/api/auth/login", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const role = registerForm.role.value;
 
       try {
-        const response = await fetch("/register", {
+        const response = await fetch("/api/auth/register", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
