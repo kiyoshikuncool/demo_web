@@ -18,6 +18,12 @@ db.init_app(app)
 bcrypt.init_app(app)
 jwt.init_app(app)
 
+# Import models theo thứ tự để tạo bảng đúng thứ tự
+from app.models.organization import Organization
+from app.models.product import Product
+from app.models.user import User
+from app.models.donation import Donation
+
 # Import and register routes (API)
 from app.controllers.user import user_bp
 from app.controllers.product import product_bp
