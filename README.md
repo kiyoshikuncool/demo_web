@@ -85,6 +85,9 @@ BODY:
 | :-------- | :------- | :------------------------- |
 | `name` | `string` | **Bắt buộc**. Tên đầy đủ |
 | `email` | `string` | **Bắt buộc**. Email |
+| `phoneNumber` | `string` | **Bắt buộc**. Số điện thoại |
+| `address` | `string` | **Bắt buộc**. Địa chỉ |
+| `type` | `string` | **Bắt buộc**. Thể loại |
 | `password` | `string` | **Bắt buộc**. Mật khẩu |
 | `role` | `string` | **Bắt buộc**. Vai trò |
 
