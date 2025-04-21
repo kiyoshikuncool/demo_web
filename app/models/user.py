@@ -3,9 +3,12 @@ from app import db, bcrypt
 class User(db.Model):    
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(100), unique=True, index=True, nullable=False)
-    username = db.Column(db.String(50), unique=True, index=True, nullable=True)
+    phoneNumber = db.Column(db.String(50), unique=True, index=True, nullable=True)
+    address = db.Column(db.String(200), nullable=True)
+    type = db.Column(db.String(20), nullable=False)  # Provider, Receiver, Transporter
     name = db.Column(db.String(100), nullable=False)
     password = db.Column(db.String(100), nullable=False)
+    avatar = db.Column(db.String(100), nullable=True)  # URL to the avatar image
     role = db.Column(db.String(20), nullable=False)  # Admin, Donor, Recipient
 
     @staticmethod
