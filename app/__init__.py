@@ -25,17 +25,17 @@ from app.models.user import User
 from app.models.donation import Donation
 
 # Import and register routes (API)
-from app.controllers.user import user_bp
+from app.controllers.auth import auth_bp
 from app.controllers.product import product_bp
 from app.controllers.donation import donation_bp
 from app.controllers.dashboard import dashboard_bp
-app.register_blueprint(user_bp)
+app.register_blueprint(auth_bp)
 app.register_blueprint(product_bp)
 app.register_blueprint(donation_bp)
 app.register_blueprint(dashboard_bp)
 
 # Import and register views (Frontend)
-from app.views.auth import auth_bp
-from app.views.landing import landing_bp
-app.register_blueprint(auth_bp)
-app.register_blueprint(landing_bp)
+from app.views.auth import auth_view_bp
+from app.views.landing import landing_view_bp
+app.register_blueprint(auth_view_bp)
+app.register_blueprint(landing_view_bp)

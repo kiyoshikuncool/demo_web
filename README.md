@@ -20,25 +20,26 @@ py -3 -m venv .venv
 
 Tiến hành dán câu lệnh cài đặt dưới đây để tiến hành cái các thư viện:
 ```
-pip install flask flask_sqlalchemy flask_bcrypt flask_jwt_extended psycopg2-binary
+pip install flask flask_sqlalchemy flask_bcrypt flask_cors flask_jwt_extended psycopg2-binary
+```
+hoặc:
+```
+pip install -r requirements.txt
 ```
 
 ### Sử dụng project
 Tiến hành chạy app thông qua lệnh:
 ```
-python app.py
+python run.py
 ```
 Nếu trên *Powershell* trả như này là thành công:
 ```
-(.venv) C:\....>python app.py
+(.venv) C:\....>python run.py
  * Serving Flask app 'app'
  * Debug mode: on
 WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
  * Running on http://127.0.0.1:5000
 Press CTRL+C to quit
- * Restarting with stat
- * Debugger is active!
- * Debugger PIN: 350-785-274
  ```
 URL của project sẽ nằm ở dòng `Running on`, phía sau đó là url để test
 
@@ -50,11 +51,16 @@ demo_web/                               # Thư mục gốc
 │   │   ├── user.py
 │   ├── models/                         # Thư mục model cho cơ sở dữ liệu (db)
 |   |   ├── user.py
+│   ├── views/                          # Thư mục để hiển thị giao diện
+|   |   ├── user.py
+|   |── static/                         # Thư mục tài nguyên của FE (UI)
+|   |── templates/                      # File html của FE
 │   ├── config.py                       # File chứa cấu hình
 │   ├── __init__.py                     # File khởi tạo
-|── static/                             # Thư mục tài nguyên của FE (UI)
-|── templates/                          # File html của FE
-│── app.py                              # File khởi chạy dự án
+│── instance (xuất hiện khi chạy - database.db)
+|── Procfile                            # Cáu hình khởi chạy trên Cloud (Heroku)
+|── requirements.txt                    # File chứa thông tin các package/lib
+│── run.py                              # File khởi chạy dự án
 ```
 # Environment Variables / Biến môi trường
 
@@ -71,7 +77,7 @@ Xem thêm tại [POSTMAN](https://www.postman.com/chriswalkerkun/workspace/chris
 ### Register / Đăng ký
 
 ```http
-  POST /register
+  POST /api/auth/register
 ```
 
 BODY:
@@ -85,7 +91,7 @@ BODY:
 ### Login / Đăng nhập
 
 ```http
-  POST /login
+  POST /api/auth/login
 ```
 
 BODY:
@@ -100,7 +106,7 @@ RETURN/Trả về:
 ### Profile / Thông tin người dùng
 
 ```http
-  GET /profile
+  GET /api/auth/profile
 ```
 
 HEADER:

@@ -3,10 +3,10 @@ from app import db
 from app.models.user import User
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
 
-user_bp = Blueprint('user', __name__, url_prefix='/api/auth')  # Blueprint for modularity
+auth_bp = Blueprint('user', __name__, url_prefix='/api/auth')  # Blueprint for modularity
 
-# @user_bp.route('/register', methods=['POST']) # Cơ bản
-@user_bp.post('/register') # Đã quen
+# @auth_bp.route('/register', methods=['POST']) # Cơ bản
+@auth_bp.post('/register') # Đã quen
 def register():
     data = request.get_json()
     
@@ -24,8 +24,8 @@ def register():
     db.session.commit()
     return jsonify(message="User registered successfully"), 201
 
-# @user_bp.route('/login', methods=['POST']) # Cơ bản
-@user_bp.post('/login') # Đã quen
+# @auth_bp.route('/login', methods=['POST']) # Cơ bản
+@auth_bp.post('/login') # Đã quen
 def login():
     data = request.get_json()
     user = User.query.filter_by(email=data['email']).first()
@@ -36,8 +36,8 @@ def login():
 
     return jsonify(message="Invalid credentials"), 401
 
-# @user_bp.route('/profile', methods=['GET'])  # Cơ bản
-@user_bp.get('/profile') # Đã quen
+# @auth_bp.route('/profile', methods=['GET'])  # Cơ bản
+@auth_bp.get('/profile') # Đã quen
 @jwt_required()
 def profile():
     user_id = get_jwt_identity()
